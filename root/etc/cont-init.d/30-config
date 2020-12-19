@@ -3,10 +3,9 @@
 # make config file
 touch /config/smb.conf
 
-
 # cleanup pid if it exists
-[[ -e /config/samba.pid ]] && \
-	rm -rf /config/samba.pid
+[[ -e /usr/local/samba/var/run/smbd.pid ]] && \
+	rm -rf /usr/local/samba/var/run/smbd.pid
 
 # permissions
 chown -R abc:abc \
