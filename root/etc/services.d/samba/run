@@ -1,0 +1,12 @@
+#!/usr/bin/with-contenv bash
+
+_term() {
+  echo "Caught SIGTERM signal!"
+  kill -TERM "$(cat /usr/local/samba/var/run/smbd.pid)" 2>/dev/null
+}
+
+        trap _term SIGTERM
+
+        s6-setuidgid abc /usr/local/samba/sbin/smbd --configfile=/config/smb.conf &
+        chown -R abc:abc /usr/local/samba/var
+        wait

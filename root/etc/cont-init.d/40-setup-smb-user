@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+useradd ${SMB_USER}
+echo -e "${SMB_PW}\n${SMB_PW}\n" | /usr/local/samba/bin/smbpasswd -L -a ${SMB_USER}
